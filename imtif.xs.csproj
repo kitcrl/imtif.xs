@@ -1,0 +1,75 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>imtif</RootNamespace>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <OutputPath>out</OutputPath>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>out</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="i\**" />
+    <Compile Remove="out\**" />
+    <Compile Remove="s\**" />
+    <EmbeddedResource Remove="i\**" />
+    <EmbeddedResource Remove="out\**" />
+    <EmbeddedResource Remove="s\**" />
+    <None Remove="i\**" />
+    <None Remove="out\**" />
+    <None Remove="s\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove=".secret.key.a32.dat" />
+    <None Remove=".secret.key.a32.idx" />
+    <None Remove=".secret.key.a64.dat" />
+    <None Remove=".secret.key.a64.idx" />
+    <None Remove=".secret.key.hf.a32.dat" />
+    <None Remove=".secret.key.hf.a32.idx" />
+    <None Remove=".secret.key.hf.a64.dat" />
+    <None Remove=".secret.key.hf.a64.idx" />
+    <None Remove=".secret.key.x32.dat" />
+    <None Remove=".secret.key.x32.idx" />
+    <None Remove=".secret.key.x64.dat" />
+    <None Remove=".secret.key.x64.idx" />
+    <None Remove=".secret.key.x86.dat" />
+    <None Remove=".secret.key.x86.idx" />
+    <None Remove=".secret.key.x86_64.dat" />
+    <None Remove=".secret.key.x86_64.idx" />
+    <None Remove=".version" />
+    <None Remove="build" />
+    <None Remove="common.h" />
+    <None Remove="icode.x.vcxproj.filters" />
+    <None Remove="icode.xd.vcxproj.filters" />
+    <None Remove="icode.xf.vcxproj.filters" />
+    <None Remove="ipreBuild.bat" />
+    <None Remove="makefile" />
+    <None Remove="opt.mak" />
+    <None Remove="postbuild" />
+    <None Remove="postBuild.bat" />
+    <None Remove="prebuild" />
+    <None Remove="preBuild.bat" />
+    <None Remove="versionbuild" />
+    <None Remove="versionBuild.bat" />
+    <None Remove="versionOut.bat" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy /y $(OutDir)\*.dll ..\mtif\x86\&#xD;&#xA;copy /y ..\imtif\out\imtif.xd.x86.dll ..\mtif\x86\" />
+  </Target>
+
+</Project>

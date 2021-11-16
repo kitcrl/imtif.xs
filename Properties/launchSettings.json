@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "icode.xs": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
